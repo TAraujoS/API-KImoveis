@@ -1,7 +1,6 @@
 import AppDataSource from "../../data-source";
 import { Categories } from "../../entities/categories.entity";
 import { AppError } from "../../errors/appError";
-import { ICategoryRequest } from "../../interfaces/categories/categories.interfaces.";
 
 const createCategoriesServices = async (name: string): Promise<Categories> => {
   const categoriesRepository = AppDataSource.getRepository(Categories);

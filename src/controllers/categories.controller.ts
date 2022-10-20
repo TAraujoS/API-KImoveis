@@ -1,17 +1,14 @@
 import { Request, Response } from "express";
-import { ICategoryRequest } from "../interfaces/categories/categories.interfaces.";
 import createCategoriesServices from "../services/categories/createCategories.service";
 import listCategoriesServices from "../services/categories/listCategories.service";
+import listPropertiesCategoryService from "../services/categories/listPropetiesCategory.service";
 
 const createCategoriesController = async (req: Request, res: Response) => {
   const data: string = req.body;
 
   const createdCategory = await createCategoriesServices(data);
 
-  return res.status(201).json({
-    message: "Category created",
-    category: createdCategory,
-  });
+  return res.status(201).json(createdCategory);
 };
 
 const listCategoriesController = async (req: Request, res: Response) => {
@@ -20,4 +17,18 @@ const listCategoriesController = async (req: Request, res: Response) => {
   return res.json(categories);
 };
 
-export { createCategoriesController, listCategoriesController };
+const listPropertiesCategoryController = async (
+  req: Request,
+  res: Response
+) => {
+  const id = req.params.id;
+  const categories = await listPropertiesCategoryService(id);
+
+  return res.json(categories);
+};
+
+export {
+  createCategoriesController,
+  listCategoriesController,
+  listPropertiesCategoryController,
+};
