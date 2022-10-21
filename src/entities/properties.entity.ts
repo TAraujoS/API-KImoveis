@@ -37,8 +37,8 @@ class Properties {
   @JoinColumn()
   address: Addresses;
 
-  @ManyToOne(() => Categories) //, categories => categories.propeties
-  category: Categories; //alterar para string
+  @ManyToOne(() => Categories)
+  category: Categories;
 
   @OneToMany(() => Schedules, (schedules) => schedules.properties)
   schedules: Schedules[];
