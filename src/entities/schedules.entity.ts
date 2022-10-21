@@ -13,7 +13,7 @@ class Schedules {
   @Column({ type: "time" })
   hour: string; //Date tmb n está errado, typeorm vai levar em consideração o type "time"
 
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, { eager: true })
   user: User;
 
   @ManyToOne(() => Properties)

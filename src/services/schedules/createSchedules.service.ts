@@ -36,19 +36,24 @@ const createSchedulesService = async ({
     throw new AppError("Schedule already exists");
   }
 
-  if (!date) {
-    throw new AppError("Invalid Date");
+  const weekDay = new Date(date).getDay();
+
+  if (weekDay === 0 || weekDay === 6) {
+    throw new AppError("Invalid week day");
   }
 
-  if (hour.length < 8 || hour.length > 18) {
+  const arrHour = hour.split(":");
+  const newHour = parseInt(arrHour[0]);
+
+  if (newHour < 8 || newHour >= 18) {
     throw new AppError("Invalid Hour");
   }
 
-  // const weekDay = new Date().getDay;
-
-  // if (weekDay === 0 || weekDay === 6) {
-  //   throw new AppError("Invalid week day");
-  // }
+  const newSchedule = new Schedules();
+  newSchedule.date = date;
+  newSchedule.hour = hour;
+  newSchedule.user = user;
+  newSchedule.properties = property;
 
   // const newSchedule = schedulesRepository.create({
   //   date,
@@ -56,12 +61,6 @@ const createSchedulesService = async ({
   //   user: user,
   //   properties: property,
   // });
-
-  const newSchedule = new Schedules();
-  newSchedule.date = date;
-  newSchedule.hour = hour;
-  newSchedule.user = user;
-  newSchedule.properties = property;
 
   await schedulesRepository.save(newSchedule);
 

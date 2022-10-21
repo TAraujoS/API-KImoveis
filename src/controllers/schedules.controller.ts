@@ -6,7 +6,7 @@ const createSchedulesContoller = async (req: Request, res: Response) => {
   const data = req.body;
   const schedules = await createSchedulesService(data);
 
-  return res.status(201).json(schedules);
+  return res.status(201).json({ message: "Created", ...schedules });
 };
 
 const listSchedulesPropertiesController = async (
