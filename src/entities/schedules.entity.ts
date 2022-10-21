@@ -11,9 +11,9 @@ class Schedules {
   date: string;
 
   @Column({ type: "time" })
-  hour: string; //Date tmb n está errado, typeorm vai levar em consideração o type "time"
+  hour: string;
 
-  @ManyToOne(() => User, { eager: true }) //com eager:true ele consegue acessar as informações de user
+  @ManyToOne(() => User, { eager: true })
   user: User;
 
   @ManyToOne(() => Properties)

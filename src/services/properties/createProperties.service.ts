@@ -49,14 +49,6 @@ const createPropertiesServices = async ({
 
   await addressesRepository.save(newAddress);
 
-  // -----SEGUNDA FORMA DE CRIAR-----
-
-  // const newProperty = new Properties();
-  // newProperty.value = value;
-  // newProperty.size = size;
-  // newProperty.address = newAddress;
-  // newProperty.category = category;
-
   const newProperty = propertyRepository.create({
     value,
     size,

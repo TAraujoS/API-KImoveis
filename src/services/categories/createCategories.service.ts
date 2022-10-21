@@ -10,8 +10,6 @@ const createCategoriesServices = async (name: string): Promise<Categories> => {
   if (findCategory) {
     throw new AppError("Category already exists");
   }
-  // const category = new Categories();
-  // category.name = name;
 
   const category = categoriesRepository.create({
     name,

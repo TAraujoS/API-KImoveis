@@ -37,24 +37,15 @@ const createSchedulesService = async ({
   }
 
   const weekDay = new Date(date).getDay();
-  //getDay() verifica o dia da semana e retorna um numero de 0 - 6, sendo 0 domingo e 6 sábado
   if (weekDay === 0 || weekDay === 6) {
     throw new AppError("Invalid week day");
   }
-  // hour está vindo como string ("10:30")
+
   const arrHour = hour.split(":");
-  //Eu separo os dois a partir do : e se cria um array [10, 30]
   const newHour = parseInt(arrHour[0]);
-  //Eu seleciono a primeira posição, e tranformo a string em um numero
   if (newHour < 8 || newHour >= 18) {
     throw new AppError("Invalid Hour");
   }
-
-  // const newSchedule = new Schedules();
-  // newSchedule.date = date;
-  // newSchedule.hour = hour;
-  // newSchedule.user = user;
-  // newSchedule.properties = property;
 
   const newSchedule = schedulesRepository.create({
     date,
