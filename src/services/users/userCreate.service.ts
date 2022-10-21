@@ -12,7 +12,7 @@ const userCreateService = async ({
 }: IUserRequest): Promise<User> => {
   const userRepository = AppDataSource.getRepository(User);
 
-  const findUser = await userRepository.findOneBy({ email }); //não havia criado anteriormente, pq tive que criar agr?
+  const findUser = await userRepository.findOneBy({ email });
 
   if (findUser) {
     throw new AppError("Email already registered");
