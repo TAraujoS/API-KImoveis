@@ -11,6 +11,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    command: bash -c "yarn typeorm migration:run -d src/data-source && yarn dev"
     volumes:
       - .:/app
 
