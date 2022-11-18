@@ -1,6 +1,6 @@
 import AppDataSource from "../../data-source";
 import { User } from "../../entities/user.entity";
-import { hashSync } from "bcrypt";
+import { hashSync } from "bcryptjs";
 import { IUserUpdate } from "../../interfaces/users/users.interfaces";
 
 const updateUserService = async (
